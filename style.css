@@ -1,0 +1,110 @@
+/* Basis & Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: #f7f7f7;
+  color: #111;
+  line-height: 1.6;
+}
+
+/* Container */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #ff6600, #ff3300);
+  color: #fff;
+  text-align: center;
+  padding: 80px 20px;
+}
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+.hero p {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+}
+.hero .cta {
+  display: inline-block;
+  padding: 18px 35px;
+  background: #fff;
+  color: #ff3300;
+  font-weight: bold;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.hero .cta:hover {
+  background: #ffe5db;
+  transform: scale(1.05);
+}
+
+/* Sections */
+section {
+  padding: 60px 20px;
+  text-align: center;
+}
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+/* Boxes */
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+.box {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  flex: 1 1 280px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+.box:hover {
+  transform: translateY(-5px);
+}
+
+/* CTA Sections */
+.final-cta {
+  background: #ff3300;
+  color: #fff;
+}
+.final-cta .cta {
+  background: #fff;
+  color: #ff3300;
+}
+.final-cta .cta:hover {
+  background: #ffe5db;
+}
+
+/* Footer */
+footer {
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 25px 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+}
