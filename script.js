@@ -1,4 +1,4 @@
-// ===== Sticky CTA Scroll Trigger =====
+// ===== STICKY CTA SCROLL TRIGGER =====
 const stickyCta = document.getElementById("stickyCta");
 
 window.addEventListener("scroll", () => {
@@ -8,7 +8,8 @@ window.addEventListener("scroll", () => {
     stickyCta.style.display = "none";
   }
 });
-// ===== Navbar Scroll Effect =====
+
+// ===== NAVBAR SCROLL EFFECT & ACTIVE LINKS =====
 const navbar = document.querySelector(".navbar");
 const navLinks = document.querySelectorAll(".nav-links a");
 const sections = document.querySelectorAll("section[id]");
@@ -37,7 +38,8 @@ window.addEventListener("scroll", () => {
     }
   });
 });
-// ===== Smooth Scroll for Nav Links =====
+
+// ===== SMOOTH SCROLL FOR NAV LINKS =====
 navLinks.forEach(link => {
   link.addEventListener("click", e => {
     if (link.hash !== "") {
@@ -50,7 +52,7 @@ navLinks.forEach(link => {
     }
   });
 });
-// ===== Fade-In Sections on Scroll =====
+// ===== FADE-IN SECTIONS ON SCROLL =====
 const faders = document.querySelectorAll(".fade-section");
 
 const appearOptions = {
@@ -58,11 +60,11 @@ const appearOptions = {
   rootMargin: "0px 0px -50px 0px"
 };
 
-const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+const appearOnScroll = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
     entry.target.classList.add("visible");
-    appearOnScroll.unobserve(entry.target);
+    observer.unobserve(entry.target);
   });
 }, appearOptions);
 
@@ -70,19 +72,21 @@ faders.forEach(fader => {
   appearOnScroll.observe(fader);
 });
 
-// ===== BURGER MENU TOGGLE =====
+// ===== MOBILE BURGER MENU =====
 const burger = document.querySelector(".burger-menu");
-const navLinks = document.querySelector(".nav-links");
+const navMenu = document.querySelector(".nav-links");
 
 burger.addEventListener("click", () => {
+  navMenu.classList.toggle("active");
   burger.classList.toggle("toggle");
-  navLinks.classList.toggle("active");
 });
 
-// ===== CLOSE MENU ON LINK CLICK (MOBILE) =====
-document.querySelectorAll(".nav-links a").forEach(link => {
+// Optional: Schließen des Menüs beim Klick auf einen Link (Mobile)
+navLinks.forEach(link => {
   link.addEventListener("click", () => {
-    navLinks.classList.remove("active");
-    burger.classList.remove("toggle");
+    if (window.innerWidth < 769) {
+      navMenu.classList.remove("active");
+      burger.classList.remove("toggle");
+    }
   });
 });
