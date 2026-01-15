@@ -70,10 +70,6 @@ faders.forEach(fader => {
   appearOnScroll.observe(fader);
 });
 // ===== Mobile Burger Menu =====
-const burger = document.createElement("div");
-burger.classList.add("burger-menu");
-burger.innerHTML = "<span></span><span></span><span></span>";
-navbar.appendChild(burger);
 
 const navMenu = document.querySelector(".nav-links");
 
