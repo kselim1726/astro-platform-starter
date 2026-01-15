@@ -69,13 +69,20 @@ const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll
 faders.forEach(fader => {
   appearOnScroll.observe(fader);
 });
-// ===== Mobile Burger Menu =====
 
-const navMenu = document.querySelector(".nav-links");
+// ===== BURGER MENU TOGGLE =====
+const burger = document.querySelector(".burger-menu");
+const navLinks = document.querySelector(".nav-links");
 
 burger.addEventListener("click", () => {
-  navMenu.classList.toggle("active");
   burger.classList.toggle("toggle");
+  navLinks.classList.toggle("active");
 });
 
-/* CSS für .burger-menu und .nav-links.active muss noch in style.css stehen */
+// ===== CLOSE MENU ON LINK CLICK (MOBILE) =====
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("active");
+    burger.classList.remove("toggle");
+  });
+});
