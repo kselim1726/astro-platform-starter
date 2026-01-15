@@ -67,6 +67,10 @@ p {
   display: flex;
   gap: 28px;
   align-items: center;
+  
+  list-style: none;
+  padding: 0;       /* ❌ entfernt Einrückung */
+  margin: 0;
 }
 
 .nav-links a {
