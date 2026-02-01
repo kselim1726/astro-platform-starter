@@ -214,6 +214,19 @@ p {
   box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
+/* Demo-Text spacing fix */
+.demo-box h2 {
+  margin-bottom: 14px;
+}
+
+.demo-box p {
+  margin-bottom: 22px;
+}
+
+.demo-box .cta-primary {
+  display: inline-block;
+}
+
 /* ===== ABOUT ===== */
 .about {
   padding: 100px 20px;
