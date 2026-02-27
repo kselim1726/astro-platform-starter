@@ -56,8 +56,16 @@ p {
 }
 
 .logo {
-  font-size: 1.35rem;
+  text-decoration: none;
+  color: var(--primary);
   font-weight: 800;
+}
+
+.logo:hover,
+.logo:focus,
+.logo:active,
+.logo:visited {
+  text-decoration: none;
   color: var(--primary);
 }
 
