@@ -377,4 +377,22 @@ p {
   height: auto;
   display: block;
   margin: 0 auto;
+
+  border-radius: 22px; /* gleiche Sprache wie deine Cards */
+  box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+}
+
+.hero-image {
+  padding: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(37,99,235,0.05),
+    rgba(15,23,42,0.03)
+  );
+
+  border-radius: 28px;
+}
+
+.hero-image {
+  animation: floatPhone 6s ease-in-out infinite;
 }
