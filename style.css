@@ -396,3 +396,94 @@ p {
 .hero-image {
   animation: floatPhone 6s ease-in-out infinite;
 }
+
+/* ============================= */
+/* DEMO LANDINGPAGE */
+/* ============================= */
+
+.demo-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* ===== HERO ===== */
+
+.demo-hero {
+  background: #0f172a;
+  color: white;
+  padding: 100px 20px;
+}
+
+.demo-hero h1 {
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+}
+
+.demo-hero p {
+  color: #e2e8f0;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+/* ===== CALL BUTTON ===== */
+.demo-call-btn {
+  display: inline-block;
+  background: #22c55e;
+  color: white;
+  padding: 18px 32px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.2rem;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+  transition: all 0.25s ease;
+}
+.demo-call-btn:hover {
+  transform: translateY(-2px);
+}
+.demo-call-btn.big {
+  font-size: 1.4rem;
+  padding: 22px 40px;
+}
+.demo-trust {
+  margin-top: 25px;
+  font-size: 0.95rem;
+  color: #cbd5f5;
+}
+/* ===== SERVICES ===== */
+.demo-services {
+  background: #f8fafc;
+  padding: 80px 20px;
+}
+.demo-services h2 {
+  margin-bottom: 40px;
+}
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 20px;
+}
+.demo-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+/* ===== CTA ===== */
+.demo-cta {
+  background: #2563eb;
+  color: white;
+  padding: 80px 20px;
+}
+/* ===== MOBILE ===== */
+@media (max-width:768px){
+  .demo-hero h1 {
+    font-size: 1.9rem;
+  }
+  .demo-call-btn {
+    width: 100%;
+  }
+}
