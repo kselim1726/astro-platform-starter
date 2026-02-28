@@ -1,92 +1,118 @@
-// ===== STICKY CTA SCROLL TRIGGER =====
-const stickyCta = document.getElementById("stickyCta");
+/* ============================
+   SATICI SERVICES - SAFE GLOBAL SCRIPT
+   Works on: index.html + about.html
+============================ */
 
-window.addEventListener("scroll", () => {
+/* ===== Sticky CTA (only if exists) ===== */
+const stickyCta = document.getElementById("stickyCta");
+function updateStickyCta() {
+  if (!stickyCta) return;
   if (window.scrollY > 600 && window.innerWidth < 769) {
     stickyCta.style.display = "block";
   } else {
     stickyCta.style.display = "none";
   }
-});
+}
 
-// ===== NAVBAR SCROLL EFFECT & ACTIVE LINKS =====
+/* ===== Navbar shadow (only if exists) ===== */
 const navbar = document.querySelector(".navbar");
-const navLinks = document.querySelectorAll(".nav-links a");
+function updateNavbarShadow() {
+  if (!navbar) return;
+  if (window.scrollY > 50) navbar.classList.add("scrolled");
+  else navbar.classList.remove("scrolled");
+}
+
+/* ===== Active link highlight for section links (homepage only-ish) ===== */
+const navAnchors = document.querySelectorAll(".nav-links a");
 const sections = document.querySelectorAll("section[id]");
 
-window.addEventListener("scroll", () => {
-  // Navbar Shadow
-  if (window.scrollY > 50) {
-    navbar.classList.add("scrolled");
-  } else {
-    navbar.classList.remove("scrolled");
-  }
+function updateActiveNavLink() {
+  if (!navAnchors.length || !sections.length) return;
 
-  // Active Link Highlight
   let current = "";
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 80;
-    if (pageYOffset >= sectionTop) {
-      current = section.getAttribute("id");
-    }
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop - 120; // slightly larger offset for sticky nav
+    if (window.scrollY >= sectionTop) current = section.getAttribute("id");
   });
 
-  navLinks.forEach(link => {
+  navAnchors.forEach((link) => {
     link.classList.remove("active");
-    if (link.getAttribute("href").includes(current)) {
+    const href = link.getAttribute("href") || "";
+    // only set active for hash-links like "#services"
+    if (current && href.startsWith("#") && href.slice(1) === current) {
       link.classList.add("active");
     }
   });
-});
+}
 
-// ===== SMOOTH SCROLL FOR NAV LINKS =====
-navLinks.forEach(link => {
-  link.addEventListener("click", e => {
-    if (link.hash !== "") {
-      e.preventDefault();
-      const target = document.querySelector(link.hash);
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    }
+/* ===== Smooth scroll only for same-page hash links ===== */
+navAnchors.forEach((link) => {
+  link.addEventListener("click", (e) => {
+    const href = link.getAttribute("href") || "";
+    if (!href.startsWith("#")) return; // ignore /about.html etc.
+
+    const target = document.querySelector(href);
+    if (!target) return;
+
+    e.preventDefault();
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 });
-// ===== FADE-IN SECTIONS ON SCROLL =====
+
+/* ===== Fade-in sections (only if exists) ===== */
 const faders = document.querySelectorAll(".fade-section");
+if (faders.length) {
+  const appearOnScroll = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.2, rootMargin: "0px 0px -50px 0px" }
+  );
 
-const appearOptions = {
-  threshold: 0.2,
-  rootMargin: "0px 0px -50px 0px"
-};
+  faders.forEach((fader) => appearOnScroll.observe(fader));
+}
 
-const appearOnScroll = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    entry.target.classList.add("visible");
-    observer.unobserve(entry.target);
-  });
-}, appearOptions);
-
-faders.forEach(fader => {
-  appearOnScroll.observe(fader);
-});
-
-// ===== MOBILE BURGER MENU =====
+/* ===== Mobile Burger Menu (only if exists) ===== */
 const burger = document.querySelector(".burger-menu");
 const navMenu = document.querySelector(".nav-links");
 
-burger.addEventListener("click", () => {
-  navMenu.classList.toggle("active");
-  burger.classList.toggle("toggle");
+function closeMobileMenu() {
+  if (!burger || !navMenu) return;
+  navMenu.classList.remove("active");
+  burger.classList.remove("toggle");
+}
+
+if (burger && navMenu) {
+  burger.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+    burger.classList.toggle("toggle");
+  });
+
+  // close menu after clicking any link (mobile)
+  navAnchors.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (window.innerWidth < 769) closeMobileMenu();
+    });
+  });
+
+  // close menu on resize to desktop
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 769) closeMobileMenu();
+  });
+}
+
+/* ===== One scroll listener for all scroll-based updates ===== */
+window.addEventListener("scroll", () => {
+  updateStickyCta();
+  updateNavbarShadow();
+  updateActiveNavLink();
 });
 
-// Optional: Schließen des Menüs beim Klick auf einen Link (Mobile)
-navLinks.forEach(link => {
-  link.addEventListener("click", () => {
-    if (window.innerWidth < 769) {
-      navMenu.classList.remove("active");
-      burger.classList.remove("toggle");
-    }
-  });
-});
+// run once on load
+updateStickyCta();
+updateNavbarShadow();
+updateActiveNavLink();
