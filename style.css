@@ -637,3 +637,22 @@ p {
   transform: translateY(-6px);
   box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
+
+/* ============================= */
+/* LEGAL PAGE */
+/* ============================= */
+
+.legal-section {
+  padding: 120px 20px;
+  background: #f8fafc;
+}
+
+.legal-section h1 {
+  margin-bottom: 30px;
+}
+
+.legal-section p {
+  margin-bottom: 18px;
+  color: var(--secondary);
+  line-height: 1.7;
+}
