@@ -656,3 +656,137 @@ p {
   color: var(--secondary);
   line-height: 1.7;
 }
+
+/* ============================= */
+/* CONTACT MODAL                 */
+/* ============================= */
+
+.contact-trigger {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.contact-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.contact-modal-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.contact-modal {
+  background: white;
+  border-radius: 24px;
+  padding: 40px 36px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+  position: relative;
+  transform: translateY(20px) scale(0.97);
+  transition: transform 0.3s ease;
+}
+
+.contact-modal-overlay.active .contact-modal {
+  transform: translateY(0) scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #f1f5f9;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--secondary);
+  transition: background 0.2s;
+}
+
+.modal-close:hover {
+  background: #e2e8f0;
+}
+
+.modal-label {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.modal-options {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.modal-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 22px;
+  border-radius: 16px;
+  text-decoration: none;
+  font-family: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.modal-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.modal-btn-phone {
+  background: #22c55e;
+  color: white;
+}
+
+.modal-btn-email {
+  background: #f8fafc;
+  color: var(--primary);
+  border-color: #e2e8f0;
+}
+
+.modal-icon {
+  font-size: 1.6rem;
+}
+
+.modal-btn-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.modal-btn-text strong {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.modal-btn-text small {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+@media (max-width: 480px) {
+  .contact-modal {
+    padding: 30px 22px;
+  }
+}
