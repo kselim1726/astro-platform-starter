@@ -656,3 +656,28 @@ p {
   color: var(--secondary);
   line-height: 1.7;
 }
+
+/* ===== DEMO BACK BUTTON ===== */
+
+.demo-back-home {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.demo-back-home a {
+  text-decoration: none;
+  background: rgba(255,255,255,0.9);
+  color: var(--primary);
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  backdrop-filter: blur(6px);
+}
+
+.demo-back-home a:hover {
+  background: white;
+}
